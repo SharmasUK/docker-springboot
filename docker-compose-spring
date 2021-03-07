@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  springbootapp:
+    image: 8639269887/javacont1:v1
+#    container_name: springboot
+    ports:
+      - 8080
+    depends_on:
+      - mongo
+    restart: on-failure
+  mongo:
+    image: mongo
+    container_name: springboot-mongo
+    ports:  # for demo/debug purpose only
+      - 27017:27017
+    volumes:
+      - /data:/data/db
+      - /data-bkp:/data/bkp
+    restart: always
